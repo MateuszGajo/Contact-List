@@ -1,0 +1,28 @@
+.contact-wrapper .contact {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.contact-wrapper .contact:first-child {
+  margin-top: 0;
+}
+.contact-wrapper .contact:hover {
+  background-color: #ffaa2a;
+}
+.contact-wrapper .contact:hover .personal-info > * {
+  color: #2aff8a;
+}
+.contact-wrapper .contact .image img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.contact-wrapper .contact .personal-info > * {
+  text-decoration: none;
+  color: black;
+  transition: 0.4s;
+}

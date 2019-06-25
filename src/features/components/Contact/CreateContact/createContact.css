@@ -1,0 +1,39 @@
+.create-contact {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 40%;
+  transform: translateX(-50%);
+}
+.create-contact h3 {
+  text-align: center;
+}
+.create-contact .input-field {
+  margin-top: 30px;
+}
+.create-contact .input-field input:focus {
+  border-bottom: 2px solid black;
+}
+.create-contact .input-field input {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  border-bottom: 2px solid grey;
+  text-align: center;
+}
+
+.create-contact .input-field button {
+  display: block;
+  height: 40px;
+  width: 100px;
+  margin: 0 auto;
+  background: transparent;
+  border: 2px solid black;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.create-contact .input-field button:hover {
+  transform: scale(1.1);
+}
