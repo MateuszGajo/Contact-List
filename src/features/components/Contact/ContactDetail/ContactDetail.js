@@ -6,12 +6,11 @@ import { contactContext } from "../../../context/contactContext";
 const ContactDetail = props => {
   const context = useContext(contactContext);
   const [singleContact, setSingleContact] = useState({});
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(Number(props.match.params.id));
   useEffect(() => {
     props.history.push(`/posts/${counter}`);
     const contact = context.contacts.find(item => item.id == counter);
     setSingleContact(contact);
-    console.log(contact);
   }, [counter]);
   return (
     <div className="detail-wrapper">
@@ -44,7 +43,7 @@ const ContactDetail = props => {
         </div>
         <div className="contact-data">
           <p>{singleContact.phoneNumber}</p>
-          <p>{singleContact.Address}</p>
+          <p>{singleContact.address}</p>
         </div>
       </div>
       <div className="action">
@@ -55,7 +54,12 @@ const ContactDetail = props => {
             props.history.push("/");
           }}
         />
-        <i className="fas fa-user-edit" />
+        <i
+          className="fas fa-user-edit"
+          onClick={() => {
+            props.history.push(`/edit/${counter}`);
+          }}
+        />
       </div>
     </div>
   );

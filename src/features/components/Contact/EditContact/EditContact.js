@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import "./createContact.css";
+import React, { useContext, useState, useEffect } from "react";
+import "./editContact.css";
 import { contactContext } from "../../../context/contactContext";
 
-const CreateContact = props => {
+const EditContact = props => {
   const context = useContext(contactContext);
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -21,22 +21,29 @@ const CreateContact = props => {
         phoneNumberError: "Numer Telefon nie może zawierać liter"
       });
     else if (!address) return setErrors({ addressError: "Wpisz adres" });
-    context.addContact({ ...values });
+    context.editContact({ ...values });
     props.history.push("/");
   };
+  useEffect(() => {
+    const selectContact = context.contacts.find(
+      item => item.id == props.match.params.id
+    );
+    setValues({ ...selectContact });
+  }, []);
   return (
     <React.Fragment>
       <div className="back">
         <p onClick={() => props.history.push("/")}>Powrót do strony głównej</p>
       </div>
       <form className="create-contact" onSubmit={handleSubmit}>
-        <h3>Dodaj nowy kontakt</h3>
+        <h3>Edytuj kontakt</h3>
         <div className="input-field">
           <input
             type="text"
             placeholder="Imię"
             name="firstName"
             onChange={handleChange}
+            value={values.firstName}
           />
           {errors.firstNameError ? errors.firstNameError : null}
         </div>
@@ -46,6 +53,7 @@ const CreateContact = props => {
             placeholder="Nazwisko"
             name="lastName"
             onChange={handleChange}
+            value={values.lastName}
           />
           {errors.lastNameError ? errors.lastNameError : null}
         </div>
@@ -55,6 +63,7 @@ const CreateContact = props => {
             placeholder="Numer telefonu"
             name="phoneNumber"
             onChange={handleChange}
+            value={values.phoneNumber}
           />
           {errors.phoneNumberError ? errors.phoneNumberError : null}
         </div>
@@ -64,15 +73,16 @@ const CreateContact = props => {
             placeholder="Adres"
             name="address"
             onChange={handleChange}
+            value={values.address}
           />
           {errors.addressError ? errors.addressError : null}
         </div>
         <div className="input-field">
-          <button>Dodaj</button>
+          <button>Zapisz</button>
         </div>
       </form>
     </React.Fragment>
   );
 };
 
-export default CreateContact;
+export default EditContact;
