@@ -1,14 +1,16 @@
 .contact-wrapper .contact {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
   padding: 0 20px;
+  margin-top: 30px;
   cursor: pointer;
   transition: 0.5s;
 }
-.contact-wrapper .contact:first-child {
-  margin-top: 0;
+.contact-wrapper a {
+  display: block;
+  margin-top: 20px;
 }
+
 .contact-wrapper .contact:hover {
   background-color: #ffaa2a;
 }
@@ -25,4 +27,7 @@
   text-decoration: none;
   color: black;
   transition: 0.4s;
+}
+.contact-wrapper .contact .personal-info p {
+  text-align: right;
 }

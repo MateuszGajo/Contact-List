@@ -11,17 +11,20 @@
 .create-contact .input-field {
   margin-top: 30px;
 }
-.create-contact .input-field input:focus {
-  border-bottom: 2px solid black;
-}
 .create-contact .input-field input {
   width: 100%;
   padding: 4px;
   border: none;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid #ffaa2a;
+  color: black;
   text-align: center;
 }
-
+.create-contact .input-field input:focus {
+  border-bottom: 2px solid #2aff8a;
+}
+.create-contact .input-field input::placeholder {
+  color: black;
+}
 .create-contact .input-field button {
   display: block;
   height: 40px;
